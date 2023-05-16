@@ -49,6 +49,7 @@
 		01C8269E27A87FD70043E890 /* CreateApnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8269D27A87FD70043E890 /* CreateApnsView.swift */; };
 		01F8C2E627B04B8300B37588 /* View+ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F8C2E527B04B8300B37588 /* View+ConditionalModifier.swift */; };
 		01F8C2E827B04C4E00B37588 /* DeleteApnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F8C2E727B04C4E00B37588 /* DeleteApnsView.swift */; };
+		45097A362A135C5700B4113E /* AppState+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45097A352A135C5700B4113E /* AppState+Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		01F8C2E527B04B8300B37588 /* View+ConditionalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ConditionalModifier.swift"; sourceTree = "<group>"; };
 		01F8C2E727B04C4E00B37588 /* DeleteApnsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteApnsView.swift; sourceTree = "<group>"; };
 		01FFBC7E27A6A6C400D8780C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		45097A352A135C5700B4113E /* AppState+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+Alert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				0101ACFD27B03F850010E212 /* AppState+Creation.swift */,
 				0101ACFF27B03FBB0010E212 /* AppState+Deletion.swift */,
 				0101AD0127B03FFC0010E212 /* AppState+SendPush.swift */,
+				45097A352A135C5700B4113E /* AppState+Alert.swift */,
 			);
 			path = AppState;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				0145B12527A5950400E0EC43 /* SecIdentityType.swift in Sources */,
 				0145B13027A5A95200E0EC43 /* SecIdentity+Extensions.swift in Sources */,
 				0188035D27B9A5CD00823EE6 /* APNSService+Error.swift in Sources */,
+				45097A362A135C5700B4113E /* AppState+Alert.swift in Sources */,
 				010E486927A5BA8500D950EF /* Persistence.swift in Sources */,
 				012CEC0127A7225000D76A5A /* GeneralSettingsView.swift in Sources */,
 				0145B12E27A59A3D00E0EC43 /* APNS+Priority.swift in Sources */,

@@ -10,8 +10,8 @@ import Foundation
 class APNSService: NSObject {
     private var session: URLSession?
     private var identity: SecIdentity?
-
-    func sendPush(for apns: APNS) async throws {
+    
+    func sendPush(for apns: APNS) async throws -> String? {
         if case .keychain(let identity) = apns.certificateType {
             self.identity = identity
         }
@@ -22,7 +22,7 @@ class APNSService: NSObject {
         case .p8:
             session = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
         }
-        guard let session = session else { return }
+        guard let session = session else { return nil }
 
         var request = URLRequest(
             url: URL(
@@ -58,6 +58,11 @@ class APNSService: NSObject {
                 print("Unable to decode error: \(error)")
             }
             if let apnsError = apnsError { throw apnsError.apiError }
+            return nil
+        } else {
+            guard let res = response as? HTTPURLResponse else { return nil }
+            print(res.allHeaderFields)
+            return res.allHeaderFields["apns-id"] as? String
         }
     }
 }

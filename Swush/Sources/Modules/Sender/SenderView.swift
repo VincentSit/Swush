@@ -52,8 +52,8 @@ struct SenderView: View {
             .onAppear {
                 self.setup()
             }
-            .alert(Text("An error occured!"), isPresented: $appState.showErrorMessage, actions: {}, message: {
-                Text(appState.errorMessage)
+            .alert(Text($appState.alertTitle.wrappedValue), isPresented: $appState.shouldAlertPresented, actions: {}, message: {
+                Text(appState.alertMessage)
             })
             .navigationTitle(appState.name)
             .animation(.default, value: appState.selectedCertificateType)

@@ -51,11 +51,20 @@ class AppState: ObservableObject {
     @Published var selectedTopic: String = ""
     @Published var showCertificateTypePicker: Bool = false
     @Published var selectedPayloadType: APNS.PayloadType = .alert
-    @Published var showErrorMessage: Bool = false
-    @Published var errorMessage: String = ""
     @Published var collapseId: String = ""
     @Published var notificationId: String = ""
     @Published var expiration: String = ""
+    @Published var alertTitle: String = ""
+    @Published var alertMessage: String = ""
+    @Published var shouldAlertPresented: Bool = false
+    @Published var alertPresentState: AlertPresentType = .none {
+        didSet {
+            shouldAlertPresented = alertPresentState.shouldPresent
+            alertTitle = alertPresentState.content.title
+            alertMessage = alertPresentState.content.message
+        }
+    }
+    
     
     var canSendApns: Bool {
         return !deviceToken.isEmpty && !payload.isEmpty && !selectedTopic.isEmpty && !selectedCertificateType.isEmptyOrNil

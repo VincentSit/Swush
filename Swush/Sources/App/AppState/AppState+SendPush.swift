@@ -10,15 +10,13 @@ import Foundation
 extension AppState {
     func sendPush() async {
         guard let _ = payload.toJSON() else {
-            errorMessage = "Please provide a valid JSON payload."
-            showErrorMessage = true
+            alertPresentState = .error(message: "Please provide a valid JSON payload.")
             return
         }
         switch selectedCertificateType {
         case .p8(let filename, _, _):
             if !FileManager.default.fileExists(atPath: filename) {
-                errorMessage = "Please provide a valid .p8 token."
-                showErrorMessage = true
+                alertPresentState = .error(message: "Please provide a valid .p8 token.")
                 return
             }
         case .keychain: break
@@ -39,11 +37,13 @@ extension AppState {
             expiration: expiration
         )
         do {
-            try await DependencyProvider.apnsService.sendPush(for: apns)
+            let apnsId = try await DependencyProvider.apnsService.sendPush(for: apns)
+            if let apnsId = apnsId {
+                alertPresentState = .success(message: "Send successfully, apns-id is \(apnsId).")
+            }
         } catch let error as APNSService.APIError {
             print(error)
-            errorMessage = error.description
-            showErrorMessage = true
+            alertPresentState = .error(message: error.description)
         } catch {
             print(error)
         }
